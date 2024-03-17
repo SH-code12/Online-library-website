@@ -1,18 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>log in</title>
-
+   
   <style>
-      #form_cc{
-         padding:50px;
-         background-color:bisque;
-         position:absolute;
-         left:600px;
-         top:220px;
-         
+      #form_cc {
+          padding: 50px;
+          background-color: bisque; 
+          position: absolute;
+          left: 600px;
+          top: 220px;
       }
   </style>
    
@@ -22,18 +21,24 @@
 <form  style="text-align:center" action="" id="form_cc" >
     <div p>
         <label>
-            Username:
+            <b> Username<sup style="color:red">*</sup></b>
         </label>
-        <input type="text" required />
+        <input type="text" placeholder="username" autofocus required />
         <br /><br>
         <label>
-            Password:
+            <b>Password<sup style="color:red">*</sup> </b>
         </label>
-        <input type="password"  required/>
+        <input type="password" placeholder="password"  required/>
         <br /><br />
-        <input type="submit" value="Login"/>
+       
+      
+
+        <br />
+        
     </div>
 </form>
-
+ <a href="http://127.0.0.1:5500/home.html" title="home" target="_blank" style="position: fixed;  left: 750px;top: 370px;">
+         <button>Login</button>
+       </a>
 </body>
 </html>
