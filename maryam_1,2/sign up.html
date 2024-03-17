@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,51 +7,60 @@
     <style>
         #form_sign {
             padding:30px;
-            background-color:crimson;
+            background-color:burlywood;
             position: absolute;
-            left: 600px;
+            left:550px;
             top: 200px;
         }
     </style>
+ 
 </head>
 <body>
 
     <form style="text-align:center" action="" id="form_sign">
-        <div p>
-            <label>
-                Username:
-            </label>
-            <input type="text" required />
-            <br /><br>
 
-            <label>
-                Password:
-            </label>
-            <input type="password"  required />
-            <br /><br /> 
+        <label>
+            <b> Username<sup style="color:red">*</sup> </b>   
+        </label>
+        <input type="text" placeholder="username" autofocus style="border:hidden;" required    />
+        <br /><br>
+        <!--//////////////////////////////////////////////////////////////////////////////////////   usernsme  -->
+        <label>
+            <b>Password<sup style="color:red">*</sup></b>
+        </label>
+        <input type="password" placeholder="password" style="border:hidden;" required    />
+        <br /><br />
+        <!--////////////////////////////////////////////////////////////////////////////////////// password  -->
+        <label>
+            <b>Confirm Password<sup style="color:red">*</sup></b>
+        </label>
 
-            <label>
-               Confirm Password:
-            </label>
-            <input type="password"  required />
-            <br /><br /> 
-
-            <label>
-                Email:
-            </label>
-            <input type="email" />
-            <br /><br /> 
-
-            <label>
-                Is_Admin:
-            </label>
-            <input type="checkbox"  required />
-
-            <br /><br />
-            <input type="submit" value="Sign up" />
-        </div>
+        <input type="password" placeholder="confirm password" style="border:hidden;" required />
+        <br /><br />
+        <!--////////////////////////////////////////////////////////////////////////////////////// confirm pass -->
+        <label for="email">
+            <b>  Email<sup style="color:red">*</sup></b>
+        </label>
+        <input type="email" placeholder="email" id="email" style="border:hidden;" />
+        <br /><br />
+        <!--////////////////////////////////////////////////////////////////////////////////////// email -->
+        <label for="admin">
+            <b>Admin<sup style="color:red">*</sup></b>
+        </label>
+        <input type="checkbox" id="admin" />
+          &nbsp;
+        <label for="user">
+            <b>User<sup style="color:red">*</sup></b>
+        </label>
+        <input type="checkbox" id="user" />
+        
+        <!--//////////////////////////////////////////////////////////////////////////////////////   is_adim or user -->
+        <br /><br />
     </form>
 
+    <a href="http://127.0.0.1:5500/home.html" title="home" target="_blank" style="position: fixed;  left: 700px;top: 430px;">
+        <button>Sign Up</button>
+      </a>
 
 </body>
 </html>
