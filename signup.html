@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Sign UP Open Library</title>
+    <link rel="stylesheet" href="signup.css">
+
+    <nav>
+        <div id="logo">
+            <a href="Home.html"><img id= "img" src="Images/logo.png" alt="logo" ></a>
+        </div>
+
+        <div class ="pos">
+            <label> <a href="mailto:Shahdelnassag@gmail.com" title="Contact by Mail"><input class="form" type="button" value="Contact"></a></label>
+        </div>
+        <div >
+            <label>
+                <input id="search" type="search" placeholder="search by title, Author" title="search Here">
+            </label>
+        </div>
+        <div class="pos">
+            <label><a href="login.html"><input class="form" type="button" title="Log In" value="Log In"></a></label>
+        </div>
+    </nav>
+</head>
+
+<body>
+    
+    <div class="background">
+            
+        <div class="name">
+            <h1>Sign UP</h1>
+        </div>
+
+        <form action="Home.html" method="post">
+            <div class="content" >
+                <div>
+                    <label for="name">First Name</label> <br>
+                    <input id="name" type="text" placeholder="Enter Your First name" title="First Name" required name="con">
+                </div>
+
+                <div>
+                    <label for="name">Last Name</label> <br>
+                    <input id="name" type="text" placeholder="Enter Your Last name" title="Last Name" required name="con">
+                </div>
+
+                <div>
+                    <label for="pass">Password</label> <br>
+                    <input id="pass" type="password" placeholder="Enter Your Password" title="Password" required name="con">
+                </div>
+
+                <div>
+                    <label for="pass">Confirm Password</label> <br>
+                    <input id="pass" type="password" placeholder="Enter Confirm Password" title="Confirm Password" required name="con">
+                </div>
+
+                <div>
+                    <label for="mail">Email</label> <br>
+                    <input id="mail" type="email" placeholder="Enter Your Email" title="Email" required name="con">
+                </div>
+
+                <div>
+                    <input id="user" type="radio" value="User" checked>
+                    <label for="user">User</label>
+                    <input id="admin" type="radio" value="Admin" >
+                    <label for="admin">Admin</label>
+                </div>
+
+                <div>
+                    <input id="rem" type="checkbox" value="Remember Me" name="con">
+                    <label for="rem">Remember Me</label>
+                </div>
+
+                <div>
+                    <input id="sin" type="submit" value="Sign UP" name="con">
+                </div>
+            </div>
+        </form>
+</body>
+</html>
