@@ -1,0 +1,129 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Marked Books</title>
+
+
+    <link rel="stylesheet" href="Avariable.css">
+
+    <script src="View&Avariable.js"></script>
+
+
+    
+</head>
+<body>
+    
+
+        <h1><a href="Home.html"><img id= "img" src="Images/Flogo.jpg" alt="logo" ></a>
+            List Of Marked Books:</h1>
+            <h3><a href="Trend.html">Trend Books</a></h3> 
+
+            <div id = "message-box">
+                <p id="message-text"></p>
+                <button id = "ok-button" onclick="hide_Message()">OK</button> 
+            </div>
+
+
+        <div class="books">
+            <div class="cover">
+                <img src="Images/Atomic habits.jpg" width="150px" alt="" title="Atomic Habits">
+                <div class="Borrow" name="message">
+
+                    <button onclick="show_message('You already borrowed this book ^_^')">Borrowed</button>
+
+                </div>
+            </div>
+
+            <div class="cover">
+                <img src="Images/Elon Musk.jpg" width="150" alt="">
+                <div class="Borrow">
+                    <button onclick="show_message('You already borrowed this book ^_^')">Borrowed</button>
+                </div>
+            </div>
+
+            <div class="cover">
+                <img src="Images/The women.jpg" width="150px" alt="">
+                <div class="Borrow">
+                    <button onclick="show_message('This book not available now ')">Not In Library</button>
+                </div>
+            </div>    
+        </div>
+
+        <h3>Kids Books</h3>
+
+        <div class="books">
+           
+            <div class="cover">
+                <img src="Images/kid6.jpg" width="188px" alt=""> 
+                <div class="Borrow">
+                    <button onclick="show_message('This book not available now ')">Not In Library</button>
+                </div>
+            </div>
+
+            <div class="cover">
+                <img src="Images/kid3.jpg" width="150px" height="200px" alt="">
+                <div class="Borrow">
+                    <button onclick="show_message('Not allowed to borrow this book')">Read Only</button>
+                </div>
+
+            </div>
+
+            <div class="cover">
+                <img src="Images/kid4.jpg" width="135px" alt="">
+                <div class="Borrow">
+                    <button onclick="show_message('You already borrowed this book ^_^')">Borrowed</button>
+                </div>
+
+            </div>
+
+            <div class="cover">
+                <img src="Images/kid5.jpg" width="130px" alt="">
+                <div class="Borrow">
+                    <button onclick="show_message('You already borrowed this book ^_^')">Borrowed</button>
+                </div>
+
+            </div>
+         
+        </div>
+
+        <h3>Programming Books</h3>
+
+        <div class="books">
+            <div class="cover">
+                <img src="Images/Clean_code.jpg" width="154px" alt="">
+                <div class="Borrow">
+                    <button onclick="show_message('You already borrowed this book ^_^')">Borrowed</button>
+                </div>
+            </div>
+            <div class="cover">
+                <img src="Images/Dav.jpeg" width="159px" alt=""> 
+                <div class="Borrow">
+                    <button onclick="show_message('This book not available now ')">Not In Library</button>
+                </div>
+            </div>
+
+            <div class="cover">
+                <img src="Images/OOP.jpg" width="150px"  alt="">
+                <div class="Borrow">
+                    <button onclick="show_message('Not allowed to borrow this book')">Read Only</button>
+                </div>
+
+            </div>
+
+            <div class="cover">
+                <img src="Images/PHP.jpeg" width="160px" alt="">
+                <div class="Borrow">
+
+                    <button onclick="show_message('You already borrowed this book ^_^')">Borrowed</button>
+                </div>
+
+            </div>
+         
+        </div>
+</body>
+</html>
+      
