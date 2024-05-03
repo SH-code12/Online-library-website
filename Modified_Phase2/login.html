@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>log in to BiblioBliss</title>
+    <!-- <link rel="stylesheet" href="../style.css"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="signup_login.css">
+    <link rel="stylesheet" href="nav.css">
+
+</head>
+
+    <nav > 
+        
+        <div style="height: 80px;"><img src="Images/Flogo.jpg" alt="Logo " style="width: 85px; margin-top: 15px;height: 65px;"></div>
+
+        <a href="mailto:shahdelnassag@gmail.com"  title="Contact By Mail">
+            <button id="nav" style=" right:53%;top:3%; width: 150px; height: 30px;"> 
+                <b>Contact</b>
+            </button>     
+        </a> 
+
+        <a href="Home.html"  title="Go to Home Page">
+            <button id="nav" style=" right:30%;top:3%; width: 150px; height: 30px;"> 
+                <b>Home</b>
+            </button>     
+        </a> 
+
+        <a href="signup.html"  title="Go to Sign Page">
+            <button id="nav" style=" right:7%;top:3%; width: 200px; height: 30px;"> 
+                <b>Sign UP</b>
+            </button>     
+        </a> 
+    </nav>
+    <section>
+        <form action="" id="form_cc" >
+            <h2>Login</h2>
+
+            <div id="divsign">
+                <div class="input"> 
+                    <i class='bx bxs-user'></i>
+                    <!-- <b> Username<sup style="color:red">*</sup></b> -->
+                    <input type="text" id="username" placeholder="username min 3" autofocus required minlength="3" />
+                    
+                </div>
+                <br> <br>
+                <div class="input">
+                    <i class='bx bxs-lock-alt'></i>
+                    <input type="password" id="password" placeholder="password max 8" maxlength="8" title="The password should be more than 8 letter" required/>
+                </div>
+                <input type="checkbox" id="showPassword" onclick="ShowPasswordlog()" style="right: 3%;height: 17px; margin-right: 6000px;">
+
+                <br> <br>
+                <div style="display: inline;">
+                    <label for="admin" name="admin0" style="color: white;"><b>Admin</b></label>
+                    <input type="radio" id="admin" name="userType" value="admin" required />
+                    <label for="user" name="user0" style="color: white;" ><b>User</b></label>
+
+                    <input type="radio" id="user" name="userType" value="user" required />
+                    <br><br>
+                </div>
+                <br /> <br>
+            </div>
+            
+
+            
+
+        </form>
+        <div class="logg">
+            <input type="submit" value="LOG IN" onclick="login(event)" style="left: 43%;">
+        </div>
+    </section>
+
+<script src="JavaScript.js"></script>
+
+</body>
+</html>

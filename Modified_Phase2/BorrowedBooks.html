@@ -1,0 +1,123 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowed Books</title>
+
+    <style>
+
+#nav{
+            color: white;
+            background-color: rgb(162, 202, 202);
+            border-color: rgb(214, 202, 202);
+            position: fixed;
+            border-radius: 15px;
+            height: 30px;
+            width: 90px;
+        }
+        b{
+            font-size: 15px;
+        } 
+        #log {
+            display: none;
+        /* position: fixed; */
+            padding: 50px;
+            background-color: #5c4a32; 
+            position: absolute;
+            left: 600px;
+            top: 220px;
+        }
+        nav{
+            background-color:#fdfdfd;
+            position: fixed;
+            top: 0px;
+            width: 100%; 
+            margin: -8px ;
+        }
+        .library {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .book {
+            position: relative;
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            margin-top: 80px;
+        }
+
+        .book-image {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            margin-bottom: 10px;
+            
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 5px 10px;
+            margin-top: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <nav >
+        <div style="height: 80px;"><img src="Images/Flogo.jpg" alt="Logo " style="width: 85px; margin-top: 15px;height: 65px;"></div>
+
+        <a href="Borrow.html"  title="Borrow a Book">
+            <button id="nav" style=" right:5%;top:3%; width: 150px; height: 30px;"> 
+                <b>Borrow a Book</b>
+            </button>     
+        </a> 
+
+        <a href="Search.html"  title="Go To Search Page">
+            <button id="nav" style=" right:21%;top:3%; width: 200px; height: 30px;"> 
+                <b>Search About Books</b>
+            </button>     
+        </a> 
+
+        <a href="ViewBook_User.html"  title="Go To User Page">
+            <button id="nav" style=" right:42%;top:3%; width: 200px; height: 30px;"> 
+                <b>User Page</b>
+            </button>     
+        </a> 
+
+        <a href="Home.html"  title="Go to Home Page">
+            <button id="nav" style=" right:62%;top:3%; width: 150px; height: 30px;"> 
+                <b>BiblioBliss Home</b>
+            </button>     
+        </a>
+    </nav>
+
+    <div style="margin-top: 80px; text-align: center;">
+        <h1 style="margin-top: 100px; color: #007bff; text-decoration: underline rgb(18, 113, 190);">Borrowed Books:</h1>
+    </div>
+    <div id="container_Borrowed" class="library">
+        <!-- Borrowed books will be displayed here -->
+    </div>
+
+    <script src="JavaScript.js"></script>
+</body>
+</html>

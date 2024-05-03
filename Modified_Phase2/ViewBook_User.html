@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Available Books In BiblioBliss</title>
+
+    <!-- <link rel="stylesheet" href="nav.css"> -->
+    <!-- <link rel="stylesheet" href="View.css"> -->
+
+    <style>
+        #nav{
+            color: white;
+            background-color: rgb(162, 202, 202);
+            border-color: rgb(214, 202, 202);
+            position: fixed;
+            border-radius: 15px;
+            height: 30px;
+            width: 90px;
+        }
+        b{
+            font-size: 15px;
+        } 
+        #log {
+            display: none;
+        /* position: fixed; */
+            padding: 50px;
+            background-color: #5c4a32; 
+            position: absolute;
+            left: 600px;
+            top: 220px;
+        }
+        nav{
+            background-color:#fdfdfd;
+            position: fixed;
+            top: 0px;
+            width: 100%; 
+            margin: -8px ;
+        }
+        .book img:hover {
+            transform: scale(1.05);
+        }
+
+        .book-details {
+            position: fixed;
+            top: 0%;
+            right: 0%;
+            /* left: 1000px; */
+            margin-top: 0px;
+
+            background-color: rgb(165, 183, 194);
+            padding: 10px;
+            border: 1px solid rgb(165, 183, 194);
+            color: white;
+            display: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            max-width: 300px; /* Adjust as needed */
+            z-index: 1000; /* Ensure it's above other content */
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Arrange content vertically */
+            align-items: flex-start; /* Align content to the start of the container */
+            /* margin-top: 500px; */
+            border-radius: 15px;
+            height: auto;
+        }
+
+        .book-details p {
+            margin: 5px 0; /* Add margin to separate paragraphs */
+            font-size: 34.9px;
+            line-height: 1.4;
+        }
+
+        .library {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .book {
+            position: relative;
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-image {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 5px 10px;
+            margin-top: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover{
+            transform: scale(1.05);
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <nav >
+        <div style="height: 80px;"><img src="Images/Flogo.jpg" alt="Logo " style="width: 85px; margin-top: 15px;height: 65px;"></div>
+        <!-- <a href="Select & Edit.html"  title="Select & Edit a book">
+            <button id="nav" style=" right:2%;top:3%; width: 250px; height: 30px;"> 
+                <b>Select a book and edit its details</b>
+            </button>     
+        </a>  -->
+
+        <!-- <a href="DeleteBook.html"  title="Delete a book">
+            <button id="nav" style=" right:82%;top:3%; width: 150px; height: 30px;"> 
+                <b>Delete a Book</b>
+            </button>     
+        </a>  -->
+
+        <!-- <a href="Details.html"  title="show details of available books">
+            <button id="nav" style=" right:62%;top:3%; width: 200px; height: 30px;"> 
+                <b>Show Details of Books</b>
+            </button>     
+        </a>  -->
+
+
+        
+        <a href="BorrowedBooks.html"  title="View Borrowed Books">
+            <button id="nav" style=" right:2%;top:3%; width: 150px; height: 30px;"> 
+                <b>Borrowed Books</b>
+            </button>     
+        </a>
+
+        <a href="Borrow.html"  title="Go To Borrow Page">
+            <button id="nav" style=" right:20%;top:3%; width: 200px; height: 30px;"> 
+                <b>Borrow a Book</b>
+            </button>     
+        </a>  
+
+        <a href="Search.html"  title="Search for a book">
+            <button id="nav" style=" right:42%;top:3%; width: 200px; height: 30px;"> 
+                <b>Search For a Book</b>
+            </button>     
+        </a> 
+
+        <a href="Home.html"  title="Go to Home Page">
+            <button id="nav" style=" right:65%;top:3%; width: 150px; height: 30px;"> 
+                <b>BiblioBliss Home</b>
+            </button>     
+        </a>
+
+        <!-- <a href="Home.html"  title="Go to Home Page">
+            <button id="nav" style=" right:82%;top:3%; width: 150px; height: 30px;"> 
+                <b>BiblioBliss Home</b>
+            </button>     
+        </a> -->
+    </nav>
+
+
+    <!-- <div id="container" style="margin-right: 50px; display: inline;"></div>
+
+
+    <div id="container" style="width: 300px; height: 250px;">
+        <h1>Book Details</h1> -->
+        <!-- <button style="margin-top: 100px;" onclick="displayBooksDetails()">View <Details></Details></button> -->
+        <!-- <div id="bookDetails">
+             Book details will be displayed here dynamically 
+        </div> -->
+    <!-- </div> -->
+
+    <!-- <div id="bookDetails" style="width: 300px; height: 250px;"></div> -->
+
+
+<!-- <div id="container" class="library">
+    <button style="margin-top: 100px;" onclick="displayBooksDetails()">Display</button>
+</div>
+<div id="bookDetails" class="book-details">
+    <button style="margin-top: 200px;" onclick="displayBooksDetails()">Display</button>
+
+</div> -->
+
+<div style="margin-top: 80px; text-align: center;">
+    <h1 style="margin-top: 100px; color: #007bff;">User Page</h1>
+    <h1 style="margin-top: 1px; color: #007bff;">Available Books:</h1>
+</div>
+
+<div id="container" class="library" style="margin-top: 100px;">
+    <!-- Books will be displayed here -->
+</div>
+
+<div id="bookDetails" class="book-details" style="margin-top: 150px;">
+    <!-- Book details will be displayed here dynamically  -->
+</div>
+
+
+
+
+    <script src="JavaScript.js"></script>
+
+
+</body>
+</html>

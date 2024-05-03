@@ -1,0 +1,116 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Details Books of BiblioBliss</title>
+    <link rel="stylesheet" href="Borrow.css">
+    <!-- <script src="View&Avariable.js"></script> -->
+    <link rel="stylesheet" href="nav.css">
+
+</head>
+
+<style>
+        #nav{
+            color: white;
+            background-color: rgb(162, 202, 202);
+            border-color: rgb(214, 202, 202);
+            position: fixed;
+            border-radius: 15px;
+            height: 30px;
+            width: 90px;
+        }
+        b{
+            font-size: 15px;
+        } 
+        #log {
+            display: none;
+        /* position: fixed; */
+            padding: 50px;
+            background-color: #5c4a32; 
+            position: absolute;
+            left: 600px;
+            top: 220px;
+        }
+        nav{
+            background-color:#fdfdfd;
+            position: fixed;
+            top: 0px;
+            width: 100%; 
+            margin: -8px ;
+        }
+
+        button:hover{
+            transform: scale(1.05);
+        }
+</style>
+<body>
+
+    <nav >
+        <div style="height: 80px;"><img src="Images/Flogo.jpg" alt="Logo " style="width: 85px; margin-top: 15px;height: 65px;"></div>
+        <a href="Select & Edit.html"  title="Select & Edit a book">
+            <button id="nav" style=" right:1%;top:3%; width: 250px; height: 30px;"> 
+                <b>Edit Books</b>
+            </button>     
+        </a> 
+
+        <a href="DeleteBook.html"  title="Delete a book">
+            <button id="nav" style=" right:24%;top:3%; width: 150px; height: 30px;"> 
+                <b>Delete a Book</b>
+            </button>     
+        </a> 
+
+        <a href="AddBook.html"  title="Add a Book">
+            <button id="nav" style=" right:41%;top:3%; width: 200px; height: 30px;"> 
+                <b>Add New Book</b>
+            </button>     
+        </a> 
+
+        <a href="ViewBooks_Admin.html"  title="Go to Admin Page">
+            <button id="nav" style=" right:62%;top:3%; width: 150px; height: 30px;"> 
+                <b>Admin Page</b>
+            </button>     
+        </a>
+
+        <a href="Home.html"  title="Go to BiblioBliss Home Page">
+            <button id="nav" style=" right:78%;top:3%; width: 150px; height: 30px;"> 
+                <b>BiblioBliss Home</b>
+            </button>     
+        </a>
+    </nav>
+
+
+    <div style="margin-top: 80px; text-align: center;">
+        <h1 style="margin-top: 100px; color: #007bff; text-decoration: underline rgb(18, 113, 190);">Display Books Details:</h1>
+    </div>
+
+
+    <div style="margin: 10px;">
+        <button id="show" onclick="displayBooksTable()" >Show Table Content</button>
+    </div>
+
+    <table id="booksTable">
+        <thead>
+            <tr>
+                <th>Image URL</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="booksTableBody">
+        </tbody>
+
+    </table>
+
+
+
+    <script src="JavaScript.js"></script>
+
+</body>
+</html>
