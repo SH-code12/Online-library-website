@@ -1,9 +1,10 @@
-from django.shortcuts import render
-from .models import LogIn
+# from django.shortcuts import render
+# from .models import LogIn
+
 from django.shortcuts import render , redirect , get_object_or_404
 from django.contrib.auth import authenticate
-from django.contrib.auth.hashers import check_password 
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
 from django.contrib import messages
 from .models import Books
@@ -14,28 +15,59 @@ from .models import User
 # def Log(request):
 #     return render(request, 'UserBooks/Log.html')
 
-def UserBooks(request):
-    books = Books.objects.all()
-    return render(request, 'Pages/ViewBook_User.html', {'books': books} )
+def SignUp(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        confirmPassword = request.POST.get('confirmpassword')
+        email = request.POST.get('email')
+        user_type = request.POST.get('userType')
+        if password != confirmPassword:
+            messages.error(request, "Passwords do not match")
+            return render(request, 'Pages/signup.html')
 
-def Borrow(request):
-    if request.method == 'POST' and 'book_id' in request.POST:
-        book_id = request.POST.get('book_id')
-        book = get_object_or_404(Books, pk=book_id)
-        book.status = 'Borrowed' 
-        book.save()
-        return JsonResponse({'message': 'Book Borrowed successfully'})
-    else:
-        borrow_books = Books.objects.filter(status='Borrow')
-        return render(request, 'Pages/Borrow.html', {'borrow_books': borrow_books})
+        if user_type == 'admin':            
+            new_user = User.objects.create(
+                username=username,
+                password=password,
+                confirmPassword=confirmPassword,
+                email=email,
+                is_admin = True
+            )
+            new_user.save()
 
-def BorrowedBooks(request):
-    if request.method == 'POST' and 'book_id' in request.POST:
-        book_id = request.POST.get('book_id')
-        book = get_object_or_404(Books, pk=book_id)
-        book.status = 'Borrow'  
-        book.save()
-        return JsonResponse({'message': 'Book returned successfully'})
-    else:
-        borrowed_books = Books.objects.filter(status='Borrowed')
-        return render(request, 'Pages/BorrowedBooks.html', {'borrowed_books': borrowed_books})
+            return redirect('AdminBooks')  
+        else:
+            new_user = User.objects.create(
+                username=username,
+                password=password,
+                confirmPassword=confirmPassword,
+                email=email,
+                is_admin = False
+            )
+            new_user.save()
+            return redirect('UserBooks')
+    return render(request, 'Pages/signup.html' )
+
+def Login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user_exists = False
+        for user in User.objects.all():
+            if user.username == username:
+                user_exists = True
+                if user.password == password:
+                    data = User(username=username,password=password,email=user.email,is_admin=user.is_admin)
+                    if user.is_admin:
+                        return redirect('AdminBooks')  
+                    else:
+                        return redirect('UserBooks')  
+                else:
+                    messages.error(request, "Invalid password")
+                    break
+        if not user_exists:
+            messages.error(request, "User does not exist. Sign up first.")
+    return render(request, 'Pages/login.html')
+
+
