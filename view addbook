@@ -1,0 +1,24 @@
+#view
+    def AddBooks(request):
+    if request.method == 'POST':
+        book_name = request.POST.get('bookName')
+        author = request.POST.get('author')
+        category = request.POST.get('category')
+        description = request.POST.get('description')
+        image = request.FILES.get('image')
+        status = request.POST.get('status')  
+        #Check for Me
+        print(f"Received: {book_name}, {author}, {category}, {description}, {image}, {status}")
+        
+        book = Books.objects.create(
+            name=book_name,
+            author=author,
+            category=category,
+            description=description,
+            image=image,
+            status=status
+        )
+        book.save()
+        
+        messages.success(request, 'Book added successfully!')
+        return redirect('AddBooks')
