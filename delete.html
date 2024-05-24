@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowed Books</title>
+</head>
+<body>
+    {% include "navUser.html" %}
+    <div style="margin-top: 80px; text-align: center; margin-bottom: 20px;">
+        <h1 style="margin-top: 100px; color: #007bff; text-decoration: underline rgb(18, 113, 190); margin-button: 20px;">delete Books:</h1>
+    </div>
+
+    <div class="book-container" style="margin-top: 20px;">
+        {% for book in borrowed_books %}
+            <div class="book">
+                <img src="{{ book.image.url }}" alt="{{ book.name }}" class="book-image">
+                <h3>{{ book.name }}</h3>
+                <button data-book-id="{{ book.id }}" class="delete-button" style="background-color:rgb(255, 99, 71);border-radius: 20px;width: 80px;height: 30px;">Delete</button>
+            </div>
+        {% endfor %}
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.delete-button').click(function() {
+                var bookId = $(this).data('book-id');
+                var csrftoken = getCookie('csrftoken'); // Get CSRF token from cookies
+    
+                $.ajax({
+                    url: '/DeleteBook/',
+                    method: 'POST',
+                    data: {
+                        'book_id': bookId,
+                        csrfmiddlewaretoken: csrftoken // Include CSRF token in data
+                    },
+                    success: function(response) {
+                        alert('Book deleted successfully!');
+                        // Optionally, remove the book element from the DOM
+                        location.reload(); // Reload the page to update the list of books
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error deleting book:', error);
+                        alert('Error deleting book. Please try again.');
+                    }
+                });
+            });
+        });
+function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Extract CSRF token from cookies
+                    if (cookie.startsWith('csrftoken=')) {
+                        cookieValue = cookie.substring('csrftoken='.length, cookie.length);
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+    
+</body>
+</html>
