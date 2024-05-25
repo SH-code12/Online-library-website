@@ -1,0 +1,39 @@
+om django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import Book
+
+@csrf_exempt
+def manage_book(request):
+    if request.method == 'GET':
+        book_id = request.GET.get('book_id')
+        book = get_object_or_404(Book, id=book_id)
+        book_data = {
+            'id': book.id,
+            'name': book.name,
+            'author': book.author,
+            'category': book.category,
+            'description': book.description,
+            'status': book.status,
+            'image_url': book.image.url if book.image else ''
+        }
+        return JsonResponse(book_data)
+    
+    elif request.method == 'POST':
+        book_id = request.POST.get('book_id')
+        book = get_object_or_404(Book, id=book_id)
+        
+        book.name = request.POST.get('name')
+        book.author = request.POST.get('author')
+        book.category = request.POST.get('category')
+        book.description = request.POST.get('description')
+        book.status = request.POST.get('status')
+        
+        if 'image_url' in request.POST:
+            book.image = request.POST.get('image_url')
+        
+        book.save()
+        return JsonResponse({'success': True, 'message': 'Book edited successfully!'})
+    
+    else:
+        return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
