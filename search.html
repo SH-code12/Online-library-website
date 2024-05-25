@@ -1,0 +1,37 @@
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search</h1>
+    <form method="POST" action="">
+        {%csrf_token%}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    <h2>Results</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+              <b> Name:  </b>  {{ book.name }}
+                <br>
+              <b>  Author: </b>   {{ book.author }}
+                <br>
+              <b>  Category:  </b>   {{ book.category }}
+                <br>
+              <b> Description:  </b>   {{ book.description }}
+                <br>
+               <b>  Status:  </b> {{ book.status }}
+               <br>
+               <b> Photo: </b>
+               <img src="{{ book.image.url }}" alt="{{ image.title }}">
+               
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{%endblock content%}
