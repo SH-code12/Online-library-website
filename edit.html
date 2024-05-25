@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Books In BiblioBliss</title>
+    <link rel="stylesheet" href="Borrow.css">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background: url('Images/Final_back.jpg') no-repeat;
+            background-position: center;
+            background-size: 1000px;
+            margin-top: 150px;
+            margin-bottom: 150px;
+        }
+        #editForm {
+            text-align: center;
+            background: none;
+            border-radius: 20px;
+            width: 350px;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgb(238, 236, 236);
+            backdrop-filter: blur(20px);
+            background-color: rgba(24, 24, 26, 0.223);
+        }
+        .attribute {
+            margin: px;
+            border-bottom: 2px solid rgb(255, 255, 255);
+            width: 310px;
+            margin-top: 5px;
+        }
+        .attribute input, input {
+            background: transparent;
+            width: 90%;
+            height: 25px;
+            border: none;
+            outline: none;
+        }
+        h1 {
+            display: inline;
+            text-align: left;
+            color: black;
+            text-decoration: solid underline black;
+        }
+        #click {
+            background-color: rgb(162, 202, 202);
+            width: 150px;
+            text-align: center;
+            border-radius: 10px; 
+            margin: 10px;
+            display: inline;
+        }
+        #title {
+            margin-bottom: 30px;
+        }
+        form input {
+            width: 175px;
+            height: 20px;
+            border-radius: 10px;
+            display: flex;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        select {
+            width: 175px;
+            height: 20px;
+            border-radius: 10px;
+            display: flex;
+            background-color: rgb(162, 202, 202);
+        }
+        #edit {
+            text-align: center;
+        }
+        h2 {
+            font-size: 2em;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body style="background: rgb(66, 82, 134);">
+    <nav>
+        <div style="height: 80px;"><img src="Images/Flogo.jpg" alt="Logo" style="width: 85px; margin-top: 15px; height: 65px;"></div>
+        <a href="AddBook.html" title="Add a Book">
+            <button id="nav" style="right: 1%; top: 3%; width: 250px; height: 30px;"><b>Add New Book</b></button>
+        </a>
+        <a href="DeleteBook.html" title="Delete a book">
+            <button id="nav" style="right: 24%; top: 3%; width: 150px; height: 30px;"><b>Delete a Book</b></button>
+        </a>
+        <a href="Details.html" title="show details of available books">
+            <button id="nav" style="right: 41%; top: 3%; width: 200px; height: 30px;"><b>Show Details of Books</b></button>
+        </a>
+        <a href="ViewBooks_Admin.html" title="Go to BiblioBliss Admin Page">
+            <button id="nav" style="right: 62%; top: 3%; width: 150px; height: 30px;"><b>Admin Page</b></button>
+        </a>
+        <a href="Home.html" title="Go to BiblioBliss Home Page">
+            <button id="nav" style="right: 78%; top: 3%; width: 150px; height: 30px;"><b>BiblioBliss Home</b></button>
+        </a>
+    </nav>
+    <div id="Not found"></div>
+    <section>
+        <form id="editForm">
+            <h2>Edit Book</h2>
+            <div>
+                <input type="text" id="editIdInput" placeholder="Enter Book ID">
+                <button id="click" type="button" onclick="selectBookById()">Select Book</button>
+            </div>
+            <div class="attribute">
+                <label for="editId" class="label">ID</label>
+                <input type="text" id="editId" placeholder="Enter ID" readonly>
+            </div>
+            <div class="attribute">
+                <label for="editName" class="label">Name</label>
+                <input type="text" id="editName" placeholder="Edit Name">
+            </div>
+            <div class="attribute">
+                <label for="editAuthor" class="label">Author</label>
+                <input type="text" id="editAuthor" placeholder="Edit Author">
+            </div>
+            <div class="attribute">
+                <label for="editCategory" class="label">Category</label>
+                <input type="text" id="editCategory" placeholder="Edit Category">
+            </div>
+            <div class="attribute">
+                <label for="editDescription" class="label">Description</label>
+                <input type="text" id="editDescription" placeholder="Edit Description">
+            </div>
+            <div class="attribute">
+                <label for="editImage" class="label">Image URL</label>
+                <input type="text" id="editImage" placeholder="Edit Image URL">
+            </div>
+            <select id="editStatus">
+                <option value="borrow">Borrow</option>
+                <option value="borrowed">Borrowed</option>
+                <option value="not_in_library">Not In Library</option>
+                <option value="read_only">Read Only</option>
+            </select>
+            <button id="click" type="button" onclick="editBook()">Save Changes</button>
+            <button id="click" type="reset" style="display: flexbox;">Clear Form</button>
+        </form>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function selectBookById() {
+            var bookId = $('#editIdInput').val();
+            if (!bookId) {
+                alert("Please enter a Book ID.");
+                return;
+            }
+            $.ajax({
+                url: '/ManageBook/',
+                method: 'GET',
+                data: { 'book_id': bookId },
+                success: function(response) {
+                    $('#editId').val(response.id);
+                    $('#editName').val(response.name);
+                    $('#editAuthor').val(response.author);
+                    $('#editCategory').val(response.category);
+                    $('#editDescription').val(response.description);
+                    $('#editImage').val(response.image_url);
+                    $('#editStatus').val(response.status);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error retrieving book:', error);
+                    alert('Error retrieving book. Please try again.');
+                }
+            });
+        }
+        function editBook() {
+            var bookId = $('#editId').val();
+            var csrftoken = getCookie('csrftoken');
+            var bookData = {
+                'book_id': bookId,
+                'name': $('#editName').val(),
+                'author': $('#editAuthor').val(),
+                'category': $('#editCategory').val(),
+                'description': $('#editDescription').val(),
+                'status': $('#editStatus').val(),
+                'image_url': $('#editImage').val(),
+                csrfmiddlewaretoken: csrftoken
+            };
+            $.ajax({
+                url: '/ManageBook/',
+                method: 'POST',
+                data: bookData,
+                success: function(response) {
+                    alert('Book edited successfully!');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error editing book:', error);
+                    alert('Error editing book. Please try again.');
+                }
+            });
+        }
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.startsWith('csrftoken=')) {
+                        cookieValue = cookie.substring('csrftoken='.length, cookie.length);
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
